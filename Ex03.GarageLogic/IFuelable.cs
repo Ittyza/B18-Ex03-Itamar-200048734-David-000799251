@@ -4,21 +4,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Ex03.GarageLogic
 {
-    public interface IElectric
+    interface IFuelable
     {
-        float m_RemainingTimeOfEngine
+        eTypeOfFuel m_TypeOfFuel
         {
             get;
             set;
         }
-        
-        float m_MaxTime
+
+        float m_AmountOfFuel
+        {
+            get;
+            set;
+        }
+
+        float m_MaxAmountOfFuel
         {
             get;
             set;
         }
         void Recharge(float amountToCharge);
+    }
+    enum eTypeOfFuel
+    {
+        
+        Soler = 0,
+        Octane_95,
+        Octane_96,
+        Octane_98
     }
 }
