@@ -26,14 +26,14 @@ namespace Ex03.GarageLogic
             get;
             set;
         }
-        void Recharge(float amountToCharge);
+        void Refuel(float amountOfFuelToFill);
     }
-    enum eTypeOfFuel
+    public enum eTypeOfFuel
     {
         
         Soler = 0,
-        Octane_95,
-        Octane_96,
-        Octane_98
+        Octane_95 = 1,
+        Octane_96 = 2,
+        Octane_98 = 3
     }
 }
