@@ -30,7 +30,6 @@ namespace Ex03.GarageLogic
     }
     enum eTypeOfFuel
     {
-        
         Soler = 0,
         Octane_95,
         Octane_96,
