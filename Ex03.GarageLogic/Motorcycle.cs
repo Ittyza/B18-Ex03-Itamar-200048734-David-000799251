@@ -12,6 +12,10 @@ namespace Ex03.GarageLogic
         private eTypeOfLicences m_TypeOfLicences;
         private int m_EngineVolume;
 
+        protected Motorcycle(string i_ModelName, string i_LicenceNumber, string i_OwnerName, string i_OwnerPhoneNumber, int i_TotalAmountOfWheels)
+            : base(i_ModelName, i_LicenceNumber, i_OwnerName, i_OwnerPhoneNumber, i_TotalAmountOfWheels)
+        {
+        }
     }
 
     enum eTypeOfLicences

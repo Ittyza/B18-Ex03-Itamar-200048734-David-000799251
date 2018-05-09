@@ -17,7 +17,11 @@ namespace Program
         public float MaxAirPressureRecommended { get => m_MaxAirPressureRecommended; set => m_MaxAirPressureRecommended = value; }
         public void InflateAction (float i_AirToAdd)
         {
-            //TODO
+            CurrentAirPressure += i_AirToAdd;
+            if(MaxAirPressureRecommended < CurrentAirPressure)
+            {
+                CurrentAirPressure = MaxAirPressureRecommended;
+            }
         }
 
     }

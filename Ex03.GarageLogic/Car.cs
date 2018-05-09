@@ -11,7 +11,15 @@ namespace Ex03.GarageLogic
     {
         eTypeColor m_TypeOfColor;
         eNumOfDoors m_NumOfDoors;
-        
+        int m_TotalAmountOfWWheels;
+
+        protected Car(string i_ModelName, string i_LicenceNumber, string i_OwnerName, string i_OwnerPhoneNumber, int i_TotalAmountOfWheels)
+            : base(i_ModelName, i_LicenceNumber, i_OwnerName, i_OwnerPhoneNumber, i_TotalAmountOfWheels)
+        {
+        }
+
+        internal eNumOfDoors NumOfDoors { get => m_NumOfDoors; set => m_NumOfDoors = value; }
+        internal eTypeColor TypeOfColor { get => m_TypeOfColor; set => m_TypeOfColor = value; }
     }
      enum eTypeColor
     {

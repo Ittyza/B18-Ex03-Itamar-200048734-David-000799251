@@ -15,6 +15,10 @@ namespace Ex03.GarageLogic
         private float m_AmountOfFuel;
         private float m_MaxAmountOfFuel;
 
+        protected Truck(string i_ModelName, string i_LicenceNumber, string i_OwnerName, string i_OwnerPhoneNumber, int i_TotalAmountOfWheels)
+            : base(i_ModelName, i_LicenceNumber, i_OwnerName, i_OwnerPhoneNumber, i_TotalAmountOfWheels)
+        {
+        }
 
         public bool IsCooled { get => m_IsCooled; set => m_IsCooled = value; }
         public float VolumeOfCargo { get => m_VolumeOfCargo; set => m_VolumeOfCargo = value; }

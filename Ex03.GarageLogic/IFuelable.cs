@@ -12,7 +12,6 @@ namespace Ex03.GarageLogic
         eTypeOfFuel TypeOfFuel
         {
             get;
-            set;
         }
 
         float AmountOfFuel
@@ -24,7 +23,6 @@ namespace Ex03.GarageLogic
         float MaxAmountOfFuel
         {
             get;
-            set;
         }
         void Refuel(float amountOfFuelToFill);
     }
