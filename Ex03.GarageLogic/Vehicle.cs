@@ -6,11 +6,16 @@ using System.Threading.Tasks;
 
 namespace Program
 {
-    abstract class Vehicle
+    public abstract class Vehicle
     {
-        String modelName;
-        String licenseNumber;
-        float remainingEnergyPercentage;
-        List<Wheel> wheels;
+        String m_ModelName;
+        String m_LicenseNumber;
+        float m_RemainingEnergyPercentage;
+        List<Wheel> m_Wheels;
+
+        public string ModelName { get => m_ModelName; set => m_ModelName = value; }
+        public string LicenseNumber { get => m_LicenseNumber; set => m_LicenseNumber = value; }
+        public float RemainingEnergyPercentage { get => m_RemainingEnergyPercentage; set => m_RemainingEnergyPercentage = value; }
+        internal List<Wheel> Wheels { get => m_Wheels; set => m_Wheels = value; }
     }
 }
