@@ -8,13 +8,13 @@ namespace Ex03.GarageLogic
 {
     public interface IElectric
     {
-        float m_RemainingTimeOfEngine
+        float RemainingTimeOfEngine
         {
             get;
             set;
         }
         
-        float m_MaxTime
+        float MaxTime
         {
             get;
             set;

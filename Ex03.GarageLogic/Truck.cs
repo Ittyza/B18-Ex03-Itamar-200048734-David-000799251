@@ -11,12 +11,16 @@ namespace Ex03.GarageLogic
     {
         private bool m_IsCooled;
         private float m_VolumeOfCargo;
+        private eTypeOfFuel m_TypeOfFuel;
+        private float m_AmountOfFuel;
+        private float m_MaxAmountOfFuel;
+
 
         public bool IsCooled { get => m_IsCooled; set => m_IsCooled = value; }
         public float VolumeOfCargo { get => m_VolumeOfCargo; set => m_VolumeOfCargo = value; }
-        public eTypeOfFuel m_TypeOfFuel { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public float m_AmountOfFuel { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public float m_MaxAmountOfFuel { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public eTypeOfFuel TypeOfFuel { get => m_TypeOfFuel; set => m_TypeOfFuel = value; }
+        public float AmountOfFuel { get => m_AmountOfFuel; set => m_AmountOfFuel = value; }
+        public float MaxAmountOfFuel { get => m_MaxAmountOfFuel; set => m_MaxAmountOfFuel = value; }
 
         public void Refuel(float amountOfFuelToFill)
         {

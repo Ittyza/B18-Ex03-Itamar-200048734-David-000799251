@@ -9,19 +9,19 @@ namespace Ex03.GarageLogic
 {
     interface IFuelable
     {
-        eTypeOfFuel m_TypeOfFuel
+        eTypeOfFuel TypeOfFuel
         {
             get;
             set;
         }
 
-        float m_AmountOfFuel
+        float AmountOfFuel
         {
             get;
             set;
         }
 
-        float m_MaxAmountOfFuel
+        float MaxAmountOfFuel
         {
             get;
             set;
