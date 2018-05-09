@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ex03.GarageLogic
 {
-    class Fuel_Based_Car : Car , IFuelable
+    class Fuel_Based_Car : Car, IFuelable
     {
         private eTypeOfFuel m_TypeOfFuel;
         private float m_AmountOfFuel;
@@ -22,6 +22,6 @@ namespace Ex03.GarageLogic
         {
             throw new NotImplementedException();
         }
-        
+
     }
 }
