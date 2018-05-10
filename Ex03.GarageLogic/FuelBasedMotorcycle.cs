@@ -7,29 +7,22 @@ using System.Threading.Tasks;
 namespace Ex03.GarageLogic
 {
 
-    class FuelBasedMotorcycle : Car, IFuelable
+    class FuelBasedMotorcycle : Car
     {
-        private eTypeOfFuel m_TypeOfFuel = eTypeOfFuel.Octane_96;
-        private float m_AmountOfFuel;
-        private float m_MaxAmountOfFuel = 6;
+        private AggregateEnumTypes.eTypeOfFuel m_TypeOfFuel = AggregateEnumTypes.eTypeOfFuel.Octane_96;
+        FuelEngine FuelBasedMotorcycleEngine = null;
+        private const int c_MaxAmountOfFuel = 6;
 
-        protected FuelBasedMotorcycle(string i_ModelName, string i_LicenceNumber, string i_OwnerName, string i_OwnerPhoneNumber, int i_TotalAmountOfWheels)
-            : base(i_ModelName, i_LicenceNumber, i_OwnerName, i_OwnerPhoneNumber, i_TotalAmountOfWheels)
+        protected FuelBasedMotorcycle(string i_ModelName, string i_LicenceNumber, string i_OwnerName, string i_OwnerPhoneNumber)
+            : base(i_ModelName, i_LicenceNumber, i_OwnerName, i_OwnerPhoneNumber)
         {
+            FuelBasedMotorcycleEngine = (FuelEngine)base.EnergyType;
+            FuelBasedMotorcycleEngine.TypeOfFuel = AggregateEnumTypes.eTypeOfFuel.Octane_96;
+            FuelBasedMotorcycleEngine.MaxAmountOfFuel = c_MaxAmountOfFuel;
+
         }
 
-        public eTypeOfFuel TypeOfFuel { get => m_TypeOfFuel; }
-        public float AmountOfFuel { get => m_AmountOfFuel; set => m_AmountOfFuel = value; }
-        public float MaxAmountOfFuel { get => m_MaxAmountOfFuel; }
 
-        public void Refuel(float amountOfFuelToFill)
-        {
-            AmountOfFuel += amountOfFuelToFill;
-            if (MaxAmountOfFuel < AmountOfFuel)
-            {
-                AmountOfFuel = MaxAmountOfFuel;
-            }
-        }
 
     }
 }

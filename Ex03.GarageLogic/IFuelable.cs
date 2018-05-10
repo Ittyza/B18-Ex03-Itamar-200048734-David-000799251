@@ -9,9 +9,10 @@ namespace Ex03.GarageLogic
 {
     interface IFuelable
     {
-        eTypeOfFuel TypeOfFuel
+        AggregateEnumTypes.eTypeOfFuel TypeOfFuel
         {
             get;
+            set;
         }
 
         float AmountOfFuel
@@ -26,11 +27,5 @@ namespace Ex03.GarageLogic
         }
         void Refuel(float amountOfFuelToFill);
     }
-    public enum eTypeOfFuel
-    {
-        Soler = 0,
-        Octane_95 = 1,
-        Octane_96 = 2,
-        Octane_98 = 3
-    }
+    
 }

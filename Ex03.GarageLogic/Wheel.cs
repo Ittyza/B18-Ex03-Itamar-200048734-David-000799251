@@ -4,24 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Program
+namespace Ex03.GarageLogic
 {
-    internal class Wheel
+    internal class Wheel : SourceOfEnergy
     {
         private String m_ManufacturerName;
-        private float m_CurrentAirPressure;
-        private float m_MaxAirPressureRecommended;
 
         public string ManufacturerName { get => m_ManufacturerName; set => m_ManufacturerName = value; }
-        public float CurrentAirPressure { get => m_CurrentAirPressure; set => m_CurrentAirPressure = value; }
-        public float MaxAirPressureRecommended { get => m_MaxAirPressureRecommended; set => m_MaxAirPressureRecommended = value; }
+        public float CurrentAirPressure { get => CurrentValueOfStoredEnergy; set => CurrentValueOfStoredEnergy = value; }
+        public float MaxAirPressureRecommended { get => MaxValueRecommended; set => MaxValueRecommended = value; }
         public void InflateAction (float i_AirToAdd)
         {
-            CurrentAirPressure += i_AirToAdd;
-            if(MaxAirPressureRecommended < CurrentAirPressure)
-            {
-                CurrentAirPressure = MaxAirPressureRecommended;
-            }
+            base.Refill(i_AirToAdd);
         }
 
     }
