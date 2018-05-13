@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ex03.GarageLogic
 {
-    class FuelEngine : SourceOfEnergy, IFuelable
+    class FuelEngine : Refillable
     {
         private AggregateEnumTypes.eTypeOfFuel eTypeOfFuel;
 

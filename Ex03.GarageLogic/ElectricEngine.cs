@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Ex03.GarageLogic
 {
-    class ElectricEngine : SourceOfEnergy, IElectric
+    class ElectricEngine : Refillable
     {
+        
         public float RemainingTimeOfEngine { get => base.CurrentValueOfStoredEnergy; set => base.CurrentValueOfStoredEnergy = value; }
         public float MaxTime { get => base.MaxValueRecommended; set => base.MaxValueRecommended = value; }
 

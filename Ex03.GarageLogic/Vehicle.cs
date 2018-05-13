@@ -16,7 +16,7 @@ namespace Ex03.GarageLogic
         Wheel[] m_Wheels;
         int m_TotalAmountOfWheels;
         AggregateEnumTypes.eStatus m_eStatus;
-        SourceOfEnergy m_EnergyType;
+        Refillable m_EnergyType;
 
         public string ModelName { get => m_ModelName; set => m_ModelName = value; }
         public string LicenseNumber { get => m_LicenseNumber; set => m_LicenseNumber = value; }
@@ -25,7 +25,7 @@ namespace Ex03.GarageLogic
         internal AggregateEnumTypes.eStatus EStatus { get => m_eStatus; set => m_eStatus = value; }
         public string OwnerPhoneNumber { get => m_OwnerPhoneNumber; set => m_OwnerPhoneNumber = value; }
         public string OwnerName { get => m_OwnerName; set => m_OwnerName = value; }
-        internal SourceOfEnergy EnergyType { get => m_EnergyType; set => m_EnergyType = value; }
+        internal Refillable EnergyType { get => m_EnergyType; set => m_EnergyType = value; }
         public int TotalAmountOfWheels { get => m_TotalAmountOfWheels; set => m_TotalAmountOfWheels = value; }
 
         protected Vehicle(string i_ModelName, string i_LicenceNumber, string i_OwnerName, string i_OwnerPhoneNumber)

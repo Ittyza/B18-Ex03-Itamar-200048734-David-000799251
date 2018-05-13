@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Ex03.GarageLogic
 {
-    internal class Wheel : SourceOfEnergy
+    internal class Wheel : Refillable
     {
-        private String m_ManufacturerName;
+        private string m_ManufacturerName;
 
         public string ManufacturerName { get => m_ManufacturerName; set => m_ManufacturerName = value; }
         public float CurrentAirPressure { get => CurrentValueOfStoredEnergy; set => CurrentValueOfStoredEnergy = value; }

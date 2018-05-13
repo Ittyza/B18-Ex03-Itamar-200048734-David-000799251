@@ -50,11 +50,9 @@
     <Compile Include="FuelBasedCar.cs" />
     <Compile Include="FuelBasedMotorcycle.cs" />
     <Compile Include="Garage.cs" />
-    <Compile Include="IElectric.cs" />
-    <Compile Include="IFuelable.cs" />
     <Compile Include="Motorcycle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SourceOfEnergy.cs" />
+    <Compile Include="Refillable.cs" />
     <Compile Include="Truck.cs" />
     <Compile Include="Vehicle.cs" />
     <Compile Include="Wheel.cs" />

@@ -17,16 +17,16 @@ namespace Ex03.GarageLogic
         }
         public enum eStatus
         {
-            InRepair,
-            Repaired,
-            PayedFor
+            InRepair = 0,
+            Repaired = 1,
+            PayedFor = 2
         }
         public enum eTypeOfLicences
         {
-            A,
-            A1,
-            B1,
-            B2
+            A = 0,
+            A1 = 1,
+            B1 = 2,
+            B2 = 3
         }
         public enum eTypeColor
         {

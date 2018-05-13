@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ex03.GarageLogic
 {
-    public abstract class SourceOfEnergy 
+    public abstract class Refillable 
     {
         private float m_CurrentValueOfStoredEnergy;
         private float m_MaxValueRecommended;
