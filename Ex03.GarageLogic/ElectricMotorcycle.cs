@@ -14,8 +14,9 @@ namespace Ex03.GarageLogic
         protected ElectricMotorcycle(string i_ModelName, string i_LicenceNumber, string i_OwnerName, string i_OwnerPhoneNumber) 
             : base(i_ModelName, i_LicenceNumber, i_OwnerName, i_OwnerPhoneNumber)
         {
-            ElectricMotorcycleEngine = (ElectricEngine)base.EnergyType;
+            ElectricMotorcycleEngine = new ElectricEngine();
             ElectricMotorcycleEngine.MaxTime = c_MaxAmountOfElectricity;
+            base.EnergyType = ElectricMotorcycleEngine;
         }
     }
 }

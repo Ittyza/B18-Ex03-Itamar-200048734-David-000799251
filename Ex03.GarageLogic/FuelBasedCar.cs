@@ -16,9 +16,10 @@ namespace Ex03.GarageLogic
         protected FuelBasedCar(string i_ModelName, string i_LicenceNumber, string i_OwnerName, string i_OwnerPhoneNumber) 
             : base(i_ModelName, i_LicenceNumber, i_OwnerName, i_OwnerPhoneNumber)
         {
-            FuelBasedCarEngine = (FuelEngine)base.EnergyType;
+            FuelBasedCarEngine = new FuelEngine();
             FuelBasedCarEngine.TypeOfFuel = AggregateEnumTypes.eTypeOfFuel.Octane_98;
             FuelBasedCarEngine.MaxAmountOfFuel = c_MaxAmountOfFuel;
+            base.EnergyType = FuelBasedCarEngine;
         }
         
     }

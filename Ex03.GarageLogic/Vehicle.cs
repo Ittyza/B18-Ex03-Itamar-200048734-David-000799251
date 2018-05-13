@@ -8,15 +8,15 @@ namespace Ex03.GarageLogic
 {
     public abstract class Vehicle
     {
-        String m_ModelName;
-        String m_LicenseNumber;
-        string m_OwnerName;
-        string m_OwnerPhoneNumber;
-        float m_RemainingEnergyPercentage;
-        Wheel[] m_Wheels;
-        int m_TotalAmountOfWheels;
-        AggregateEnumTypes.eStatus m_eStatus;
-        Refillable m_EnergyType;
+        private string m_ModelName;
+        private string m_LicenseNumber;
+        private string m_OwnerName;
+        private string m_OwnerPhoneNumber;
+        private float m_RemainingEnergyPercentage;
+        private Wheel[] m_Wheels;
+        private int m_TotalAmountOfWheels;
+        private AggregateEnumTypes.eStatus m_eStatus;
+        private Refillable m_EnergyType;
 
         public string ModelName { get => m_ModelName; set => m_ModelName = value; }
         public string LicenseNumber { get => m_LicenseNumber; set => m_LicenseNumber = value; }
