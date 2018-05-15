@@ -46,6 +46,12 @@ namespace Ex03.GarageLogic
             }
             return vehiclesInGarage;
         }
+
+        public void changeStatus(string v1, string v2)
+        {
+            throw new NotImplementedException();
+        }
+
         public void changeStatus(string i_LicenseNumber, AggregateEnumTypes.eStatus i_eStatus)
         {
             foreach (string licenceNumber in m_GarageVehicles.Keys)

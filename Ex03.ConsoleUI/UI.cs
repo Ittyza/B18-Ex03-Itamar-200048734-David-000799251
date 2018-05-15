@@ -37,7 +37,25 @@ namespace Ex03.ConsoleUI
                 case AggregateEnumTypes.eMenuType.One:
                     garage.addVehiclesToGarage(ValidateUserInput.validateTypeOfVehicleFromUser(), ValidateUserInput.validateModelName(), ValidateUserInput.validateLicenseNumberFromUser(), ValidateUserInput.validateOwnerNameFromUser(), ValidateUserInput.validateOwnerPhoneNumberFromUser());
                     break;
-                    
+                case AggregateEnumTypes.eMenuType.Two:
+                    garage.displayVehiclesInformation();
+                    break;
+                case AggregateEnumTypes.eMenuType.Three:
+                    garage.changeStatus(ValidateUserInput.validateLicenseNumberFromUser() ,ValidateUserInput.statusFromUser());
+                    break;
+                case AggregateEnumTypes.eMenuType.Four:
+                    garage.inflateWheels(ValidateUserInput.validateLicenseNumberFromUser());
+                    break;
+                case AggregateEnumTypes.eMenuType.Five:
+                    garage.refillVehicle(ValidateUserInput.validateLicenseNumberFromUser(), ValidateUserInput.validateTypeOfFuelFromUser(),ValidateUserInput.validateAmountToRefill());
+                    break;
+                case AggregateEnumTypes.eMenuType.Six:
+                    garage.refillVehicle(ValidateUserInput.validateLicenseNumberFromUser(), ValidateUserInput.validateAmountToRefill());
+                    break;
+                case AggregateEnumTypes.eMenuType.Seven:
+                    garage.displayVehiclesInformation();
+                    break;
+
 
             }
         }

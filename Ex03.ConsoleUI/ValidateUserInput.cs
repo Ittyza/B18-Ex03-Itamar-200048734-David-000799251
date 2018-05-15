@@ -65,6 +65,21 @@ namespace Ex03.ConsoleUI
             return userInputNumberAsString;
         }
 
+        internal static float validateAmountToRefill()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static AggregateEnumTypes.eTypeOfFuel validateTypeOfFuelFromUser()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static string statusFromUser()
+        {
+            throw new NotImplementedException();
+        }
+
         internal static string validateOwnerNameFromUser()
         {
             bool userInputIsGood = false;
@@ -178,7 +193,7 @@ namespace Ex03.ConsoleUI
         }
 
 
-        internal int validateUserMainMenuAction(string i_UserActionChoise)
+        internal static int validateUserMainMenuAction(string i_UserActionChoise)
         {
             bool isValid = false;
             int result = 0;
