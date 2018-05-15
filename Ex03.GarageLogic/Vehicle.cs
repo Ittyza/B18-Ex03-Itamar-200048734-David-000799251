@@ -54,9 +54,6 @@ namespace Ex03.GarageLogic
                     wheel.MaxAirPressureRecommended = i_MaxAirPressure;
                     wheel.CurrentAirPressure = wheel.MaxAirPressureRecommended;
                     Wheels[i] = wheel;
-
-
-
                 }
             }
         }

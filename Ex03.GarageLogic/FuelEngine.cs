@@ -12,7 +12,7 @@ namespace Ex03.GarageLogic
 
         public AggregateEnumTypes.eTypeOfFuel TypeOfFuel { get => eTypeOfFuel; set => eTypeOfFuel = value; }
 
-        public float AmountOfFuel { get => CurrentValueOfStoredEnergy; set => CurrentValueOfStoredEnergy = value; }
+        public float FuelLevel { get => CurrentValueOfStoredEnergy; set => CurrentValueOfStoredEnergy = value; }
 
         public float MaxAmountOfFuel { get => MaxValueRecommended; set => MaxValueRecommended = value; }
 
@@ -23,7 +23,7 @@ namespace Ex03.GarageLogic
 
         public override string ToString()
         {
-            return string.Format("The type of fuel is {0}, and the amount of current fuel is {1}, and the total is {2}", TypeOfFuel.ToString(), AmountOfFuel.ToString("0.00"), MaxAmountOfFuel.ToString("0.00"));
+            return string.Format("The type of fuel is {0}, and the amount of current fuel is {1}, and the total is {2}", TypeOfFuel.ToString(), FuelLevel.ToString("0.00"), MaxAmountOfFuel.ToString("0.00"));
         }
     }
 }
