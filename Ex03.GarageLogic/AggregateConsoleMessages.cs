@@ -5,13 +5,14 @@ namespace Ex03.GarageLogic
 {
     public class AggregateConsoleMessages
     {
-        public static void welcomeMessage(Garage i_Garage)
+        public static void MainMenu(Garage i_Garage)
         {
             Console.WriteLine(
                 "Welcome to {0}'s Main Menu{1}{1}" +
                 "" +
                 "What action would you like to implement?{1}{1}" +
                 "" +
+                "0. Quit{1}" +
                 "1. Insert new vehicle{1}" +
                 "2. Display the vehicles currently in the garage{1}" +
                 "3. Change a certain vehichle's status{1}" +
