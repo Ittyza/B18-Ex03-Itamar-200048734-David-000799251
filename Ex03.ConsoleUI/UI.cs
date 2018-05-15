@@ -24,9 +24,10 @@ namespace Ex03.ConsoleUI
 
         internal void ManageGarage(Garage garage)
         {
-            AggregateConsoleMessages.welcomeMessage(garage);
+            AggregateConsoleMessages.MainMenu(garage);
 
-            int userChosenFuction = int.Parse(Console.ReadLine());
+            int userChosenFuction = ValidateUserInput.validateUserMainMenuAction();
+
             AggregateEnumTypes.eMenuType parsedUserInputAsEnum = (AggregateEnumTypes.eMenuType)Enum.Parse(typeof(AggregateEnumTypes.eMenuType), userChosenFuction.ToString());
 
             switch (parsedUserInputAsEnum)
