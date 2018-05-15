@@ -18,7 +18,7 @@ namespace Ex03.GarageLogic
             m_GarageVehicles = new Dictionary<string, Vehicle>();
         }
 
-        public void addCarsInGarage(AggregateEnumTypes.eTypeOfVehicles eTypeOfVehicles, string i_ModelName, string i_LicenseNumber, string i_OwnerName, string i_OwnerPhoneNumber)
+        public void addVehiclesToGarage(AggregateEnumTypes.eTypeOfVehicles eTypeOfVehicles, string i_ModelName, string i_LicenseNumber, string i_OwnerName, string i_OwnerPhoneNumber)
         {
             Vehicle vehicleToAdd = createCars(eTypeOfVehicles, i_ModelName, i_LicenseNumber, i_OwnerName, i_OwnerPhoneNumber);
             if (m_GarageVehicles.ContainsKey(i_LicenseNumber))
@@ -33,15 +33,15 @@ namespace Ex03.GarageLogic
         }
         private Dictionary<string, Vehicle> dictionaryOfVehiclesInGarageBasedOnStatus(AggregateEnumTypes.eStatus i_eStatus)
         {
-            Dictionary<string, Vehicle> vehicleInGarage = new Dictionary<string, Vehicle>();
+            Dictionary<string, Vehicle> vehiclesInGarage = new Dictionary<string, Vehicle>();
             foreach (Vehicle vehicle in m_GarageVehicles.Values)
             {
                 if (i_eStatus == vehicle.EStatus)
                 {
-                    vehicleInGarage.Add(vehicle.LicenseNumber, vehicle);
+                    vehiclesInGarage.Add(vehicle.LicenseNumber, vehicle);
                 }
             }
-            return vehicleInGarage;
+            return vehiclesInGarage;
         }
         private void changeStatus(string i_LicenseNumber, AggregateEnumTypes.eStatus i_eStatus)
         {
@@ -57,7 +57,6 @@ namespace Ex03.GarageLogic
                 }
             }
         }
-
         internal void inflateWheels(string i_LicenseNumber)
         {
             foreach (string licenceNumber in m_GarageVehicles.Keys)
@@ -79,7 +78,6 @@ namespace Ex03.GarageLogic
                 }
             }
         }
-
         internal void refillVehicle(string i_LicenseNumber, float i_AmountToRefill)
         {
             refillVehicle(i_LicenseNumber, 0, i_AmountToRefill);
@@ -109,7 +107,6 @@ namespace Ex03.GarageLogic
                     {
                         AggregateConsoleMessages.theEngineOfTheVehicleisNotFillable(i_LicenseNumber);
                     }
-
                 }
                 else
                 {
@@ -117,7 +114,6 @@ namespace Ex03.GarageLogic
                 }
             }
         }
-
         private Vehicle createCars(AggregateEnumTypes.eTypeOfVehicles eTypeOfVehicles, string i_ModelName, string i_LicenseNumber, string i_OwnerName, string i_OwnerPhoneNumber)
         {
             Vehicle vehicle;
@@ -152,7 +148,6 @@ namespace Ex03.GarageLogic
         internal void displayVehiclesInformation()
         {
             AggregateConsoleMessages.displayVehicle(m_GarageVehicles);
-
         }
 
     }

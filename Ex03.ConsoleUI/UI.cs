@@ -12,7 +12,7 @@ namespace Ex03.ConsoleUI
         internal void Run()
         {
             Garage garage = new Garage();
-            garage.addCarsInGarage(ValidateUserInput.validateTypeFromUser(), ValidateUserInput.validateModelName(), ValidateUserInput.validateLicenseNumberFromUser(), ValidateUserInput.validateOwnerNameFromUser(), ValidateUserInput.validateOwnerPhoneNumberFromUser());
+            garage.addVehiclesToGarage(ValidateUserInput.validateTypeFromUser(), ValidateUserInput.validateModelName(), ValidateUserInput.validateLicenseNumberFromUser(), ValidateUserInput.validateOwnerNameFromUser(), ValidateUserInput.validateOwnerPhoneNumberFromUser());
         }
         
     }
