@@ -161,7 +161,7 @@ namespace Ex03.ConsoleUI
                 bool booleanToTry = int.TryParse(Console.ReadLine(), out result);
                 if (!booleanToTry)
                 {
-                    Console.WriteLine("The input must be of a number, please try again {0}", Environment.NewLine);
+                    Console.WriteLine("The input must be of a number, please try again");
                     continue;
                 }
                 if (result == 6 || result == 8 || result == 10)
@@ -170,7 +170,7 @@ namespace Ex03.ConsoleUI
                 }
                 else
                 {
-                    Console.WriteLine("The input must be of a a 6, 8 or 10, please try again {0}", Environment.NewLine);
+                    Console.WriteLine("The input must be 6, 8 or 10, please try again");
                     continue;
                 }
             }
@@ -199,7 +199,7 @@ namespace Ex03.ConsoleUI
                 }
                 else
                 {
-                    Console.WriteLine("The input must be a number between 0 and 7");
+                    Console.WriteLine("The input must be a number");
                     continue;
                 }
             }
@@ -214,17 +214,90 @@ namespace Ex03.ConsoleUI
         }
         internal static float validateAmountToRefill()
         {
-            throw new NotImplementedException();
+            float result = 0;
+            bool isValid = false;
+            string amountToRefill;
+            while (!isValid)
+            {
+                amountToRefill = Console.ReadLine();
+                if (float.TryParse(amountToRefill, out result))
+                {
+                    if (result < 0)
+                    {
+                        Console.WriteLine("Make sure the number is positive");
+                        continue;
+                    }
+                    else
+                    {
+                        isValid = true;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("The input must be a number");
+                    continue;
+                }
+            }
+            return result;
         }
 
         internal static AggregateEnumTypes.eTypeOfFuel validateTypeOfFuelFromUser()
         {
-            throw new NotImplementedException();
+            bool userInputIsGood = false;
+            string userInputNumberAsString = null;
+            AggregateEnumTypes.eTypeOfFuel eTypeOfFuel = new AggregateEnumTypes.eTypeOfFuel();
+
+            while (!userInputIsGood)
+            {
+                Console.WriteLine("Please insert the type of fuel");
+
+                userInputNumberAsString = Console.ReadLine();
+
+
+                if (!Enum.IsDefined(typeof(AggregateEnumTypes.eTypeOfFuel), userInputNumberAsString))
+                {
+                    Console.WriteLine("Ensure that is either 0 (Soler), 1 (Octane 95), 2 (Octane 96) or 3 (Octane 98)");
+                    break;
+                }
+                try
+                {
+                    eTypeOfFuel = (AggregateEnumTypes.eTypeOfFuel)Enum.Parse(typeof(AggregateEnumTypes.eTypeOfFuel), userInputNumberAsString);
+                }
+                catch (ArgumentException)
+                {
+                }
+            }
+ 
+            return eTypeOfFuel;
         }
 
-        internal static string statusFromUser()
+        internal static AggregateEnumTypes.eStatus statusFromUser()
         {
-            throw new NotImplementedException();
+            bool userInputIsGood = false;
+            string userInputNumberAsString = null;
+            AggregateEnumTypes.eStatus eStatus = new AggregateEnumTypes.eStatus();
+
+            while (!userInputIsGood)
+            {
+                Console.WriteLine("Please insert the new status");
+
+                userInputNumberAsString = Console.ReadLine();
+
+                if (!Enum.IsDefined(typeof(AggregateEnumTypes.eStatus), userInputNumberAsString))
+                {
+                    Console.WriteLine("Ensure that is either 0 (In Repair), 1 (Repaired) or 2 (Payed For)");
+                    break;
+                }
+                try
+                {
+                    eStatus = (AggregateEnumTypes.eStatus)Enum.Parse(typeof(AggregateEnumTypes.eStatus), userInputNumberAsString);
+                }
+                catch (ArgumentException)
+                {
+                }
+            }
+
+            return eStatus;
         }
     }
 }
