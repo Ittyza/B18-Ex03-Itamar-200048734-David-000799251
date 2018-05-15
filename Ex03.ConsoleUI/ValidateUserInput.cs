@@ -212,6 +212,20 @@ namespace Ex03.ConsoleUI
             Console.ReadLine();
             Environment.Exit(200);
         }
+        internal static float validateAmountToRefill()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static AggregateEnumTypes.eTypeOfFuel validateTypeOfFuelFromUser()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static string statusFromUser()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
