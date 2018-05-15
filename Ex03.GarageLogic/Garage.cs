@@ -9,13 +9,16 @@ namespace Ex03.GarageLogic
     public class Garage
     {
         private Dictionary<string, Vehicle> m_GarageVehicles;
-
+        private String m_garageName;
 
         public Dictionary<string, Vehicle> GarageVehicles { get => m_GarageVehicles; set => m_GarageVehicles = value; }
+        public string GarageName { get => m_garageName; set => m_garageName = value; }
+
         // To Implement
         public Garage()
         {
             m_GarageVehicles = new Dictionary<string, Vehicle>();
+            GarageName = this.GarageName;
         }
 
         public void addVehiclesToGarage(AggregateEnumTypes.eTypeOfVehicles eTypeOfVehicles, string i_ModelName, string i_LicenseNumber, string i_OwnerName, string i_OwnerPhoneNumber)
