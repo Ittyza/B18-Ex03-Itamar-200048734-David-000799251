@@ -151,32 +151,6 @@ namespace Ex03.ConsoleUI
 
         }
 
-        internal static int validateInputFromUserAsInt6or8or10()
-        {
-            bool isValid = false;
-            int result = 0;
-            while (!isValid)
-            {
-
-                bool booleanToTry = int.TryParse(Console.ReadLine(), out result);
-                if (!booleanToTry)
-                {
-                    Console.WriteLine("The input must be of a number, please try again {0}", Environment.NewLine);
-                    continue;
-                }
-                if (result == 6 || result == 8 || result == 10)
-                {
-                    isValid = true;
-                }
-                else
-                {
-                    Console.WriteLine("The input must be of a a 6, 8 or 10, please try again {0}", Environment.NewLine);
-                    continue;
-                }
-            }
-            return result;
-        }
-
         internal static int validateUserMainMenuAction()
         {
             int result = 0;
@@ -227,5 +201,6 @@ namespace Ex03.ConsoleUI
             throw new NotImplementedException();
         }
     }
+
 }
 
