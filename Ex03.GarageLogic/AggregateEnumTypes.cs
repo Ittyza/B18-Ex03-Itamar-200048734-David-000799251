@@ -62,6 +62,10 @@ namespace Ex03.GarageLogic
             Six,
             Seven
         }
-
+        public enum eIsCooled
+        {
+            No = 0,
+            Yes = 1,
+        }
     }
 }

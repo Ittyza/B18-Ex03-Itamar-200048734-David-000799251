@@ -38,7 +38,7 @@ namespace Ex03.ConsoleUI
 
                 case AggregateEnumTypes.eMenuType.One:
                     AggregateEnumTypes.eTypeOfVehicles TypeOfVehicle = ValidateUserInput.validateTypeOfVehicleFromUser();
-                    getParamFromUser(TypeOfVehicle , garage)
+                    getParamFromUser(TypeOfVehicle, garage);
                     garage.addVehiclesToGarage(ValidateUserInput.validateTypeOfVehicleFromUser(), ValidateUserInput.validateModelName(), ValidateUserInput.validateLicenseNumberFromUser(), ValidateUserInput.validateOwnerNameFromUser(), ValidateUserInput.validateOwnerPhoneNumberFromUser());
                     ManageGarage(garage);
                     break;
@@ -79,19 +79,19 @@ namespace Ex03.ConsoleUI
             switch (typeOfVehicle)
             {
                 case AggregateEnumTypes.eTypeOfVehicles.FuelBasedMotorcycle:
-                    garage.setLicenseAndEngineVolume(ValidateUserInput.LicenseTypeFromUser(), ValidateUserInput.EngineVolume());
+                    garage.setLicenseAndEngineVolume(ValidateUserInput.validateLicenseTypeFromUser(), ValidateUserInput.validateEngineVolume());
                     break;
                 case AggregateEnumTypes.eTypeOfVehicles.ElectricMotorcycle:
-                    garage.setLicenseAndEngineVolume(ValidateUserInput.LicenseTypeFromUser(), ValidateUserInput.EngineVolume());
+                    garage.setLicenseAndEngineVolume(ValidateUserInput.validateLicenseTypeFromUser(), ValidateUserInput.validateEngineVolume());
                     break;
                 case AggregateEnumTypes.eTypeOfVehicles.FuelBasedCar:
-                    garage.setColorAndDoors(ValidateUserInput.typeOfColor(), ValidateUserInput.numberOfDoors());
+                    garage.setColorAndDoors(ValidateUserInput.validateTypeOfColor(), ValidateUserInput.validateNumberOfDoors());
                     break;
                 case AggregateEnumTypes.eTypeOfVehicles.ElectricCar:
-                    garage.setColorAndDoors(ValidateUserInput.typeOfColor(), ValidateUserInput.numberOfDoors());
+                    garage.setColorAndDoors(ValidateUserInput.validateTypeOfColor(), ValidateUserInput.validateNumberOfDoors());
                     break;
                 case AggregateEnumTypes.eTypeOfVehicles.FuelBasedTruck:
-                    garage.setCooledandVolumeOfCargo(ValidateUserInput.isCooled(), ValidateUserInput.volumeOfCargo());
+                    garage.setCooledandVolumeOfCargo(ValidateUserInput.validateIsCooled(), ValidateUserInput.validateVolumeOfCargo());
                     break;
             }
         }

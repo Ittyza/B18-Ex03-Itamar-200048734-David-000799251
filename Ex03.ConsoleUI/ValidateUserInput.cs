@@ -26,7 +26,7 @@ namespace Ex03.ConsoleUI
                 {
                     if (!char.IsLetter(letter))
                     {
-                        Console.WriteLine("Wrong input, please try again.");
+                        Console.WriteLine("Wrong input, please try again");
                         break;
                     }
                     if (char.IsLetter(userInputNumberAsString[userInputNumberAsString.Length - 1]))
@@ -53,7 +53,7 @@ namespace Ex03.ConsoleUI
                 {
                     if (!char.IsNumber(number))
                     {
-                        Console.WriteLine("Wrong input, please try again.");
+                        Console.WriteLine("The input must be a number, please try again");
                         break;
                     }
                     if (char.IsNumber(userInputNumberAsString[userInputNumberAsString.Length - 1]))
@@ -78,9 +78,9 @@ namespace Ex03.ConsoleUI
 
                 foreach (char letter in userInputNumberAsString)
                 {
-                    if (!char.IsLetter(letter))
+                    if (!char.IsLetter(letter) || letter != ' ')
                     {
-                        Console.WriteLine("Wrong input, please try again.");
+                        Console.WriteLine("The input must only be letters and spaces, please try again");
                         break;
                     }
                     if (char.IsLetter(userInputNumberAsString[userInputNumberAsString.Length - 1]))
@@ -107,7 +107,7 @@ namespace Ex03.ConsoleUI
                 {
                     if (!char.IsDigit(letter))
                     {
-                        Console.WriteLine("Wrong input, please try again.");
+                        Console.WriteLine("The input must be a number, please try again");
                         break;
                     }
                     if (char.IsDigit(userInputNumberAsString[userInputNumberAsString.Length - 1]))
@@ -117,6 +117,132 @@ namespace Ex03.ConsoleUI
                 }
             }
             return userInputNumberAsString;
+        }
+
+        internal static AggregateEnumTypes.eNumOfDoors validateNumberOfDoors()
+        {
+            bool userInputIsGood = false;
+            string userInputNumberAsString = null;
+            AggregateEnumTypes.eNumOfDoors eNumOfDoors = new AggregateEnumTypes.eNumOfDoors();
+
+            while (!userInputIsGood)
+            {
+                Console.WriteLine("Please insert the number of doors");
+
+                userInputNumberAsString = Console.ReadLine();
+
+                if (!Enum.IsDefined(typeof(AggregateEnumTypes.eNumOfDoors), userInputNumberAsString))
+                {
+                    Console.WriteLine("The input must be between 2 and 5, please try again");
+                    break;
+                }
+                try
+                {
+                    eNumOfDoors = (AggregateEnumTypes.eNumOfDoors)Enum.Parse(typeof(AggregateEnumTypes.eNumOfDoors), userInputNumberAsString);
+                }
+                catch (ArgumentException)
+                {
+                }
+            }
+
+            return eNumOfDoors;
+        }
+
+        internal static AggregateEnumTypes.eTypeColor validateTypeOfColor()
+        {
+            bool userInputIsGood = false;
+            string userInputNumberAsString = null;
+            AggregateEnumTypes.eTypeColor eTypeColor = new AggregateEnumTypes.eTypeColor();
+
+            while (!userInputIsGood)
+            {
+                Console.WriteLine("Please insert the number of doors");
+
+                userInputNumberAsString = Console.ReadLine();
+
+                if (!Enum.IsDefined(typeof(AggregateEnumTypes.eNumOfDoors), userInputNumberAsString))
+                {
+                    Console.WriteLine("The input must be between 1 and 4, please try again");
+                    break;
+                }
+                try
+                {
+                    eTypeColor = (AggregateEnumTypes.eTypeColor)Enum.Parse(typeof(AggregateEnumTypes.eTypeColor), userInputNumberAsString);
+                }
+                catch (ArgumentException)
+                {
+                }
+            }
+
+            return eTypeColor;
+        }
+
+        internal static int validateEngineVolume()
+        {
+            bool isValid = false;
+            int result = 0;
+
+            while (!isValid)
+            {
+                bool booleanToTry = int.TryParse(Console.ReadLine(), out result);
+                if (!booleanToTry)
+                {
+                    Console.WriteLine("The input must a number, please try again");
+                    continue;
+                }
+                if (result < 0)
+                {
+                    isValid = true;
+                }
+                else
+                {
+                    Console.WriteLine("The number must be positive");
+                    continue;
+                }
+            }
+
+            return result;
+        }
+
+        internal static AggregateEnumTypes.eIsCooled validateIsCooled()
+        {
+            bool userInputIsGood = false;
+            string userInputNumberAsString = null;
+            AggregateEnumTypes.eIsCooled eIsCooled = new AggregateEnumTypes.eIsCooled();
+
+            while (!userInputIsGood)
+            {
+                Console.WriteLine("Is the truck cooled? 0 for no 1 for yes");
+
+                userInputNumberAsString = Console.ReadLine();
+
+                if (!Enum.IsDefined(typeof(AggregateEnumTypes.eIsCooled), userInputNumberAsString))
+                {
+                    Console.WriteLine("The input must be between 0 and 1, please try again");
+                    break;
+                }
+                try
+                {
+                    eIsCooled = (AggregateEnumTypes.eIsCooled)Enum.Parse(typeof(AggregateEnumTypes.eIsCooled), userInputNumberAsString);
+                }
+                catch (ArgumentException)
+                {
+                }
+            }
+
+            return eIsCooled;
+        }
+
+        internal static object validateVolumeOfCargo()
+        {
+            // TODO
+            throw new NotImplementedException();
+        }
+
+        internal static object validateLicenseTypeFromUser()
+        {
+            // TODO
+            throw new NotImplementedException();
         }
 
         internal static AggregateEnumTypes.eTypeOfVehicles validateTypeOfVehicleFromUser()
@@ -146,18 +272,16 @@ namespace Ex03.ConsoleUI
                 }
             }
 
-
             return eTypeOfVehicles;
-
         }
 
         internal static int validateInputFromUserAsInt6or8or10()
         {
             bool isValid = false;
             int result = 0;
+
             while (!isValid)
             {
-
                 bool booleanToTry = int.TryParse(Console.ReadLine(), out result);
                 if (!booleanToTry)
                 {
@@ -174,6 +298,7 @@ namespace Ex03.ConsoleUI
                     continue;
                 }
             }
+
             return result;
         }
 
@@ -189,7 +314,7 @@ namespace Ex03.ConsoleUI
                 {
                     if (result < 0 || result > 7)
                     {
-                        Console.WriteLine("Make sure the number is between 0 and 7");
+                        Console.WriteLine("Make sure the number is between 0 and 7, please try again");
                         continue;
                     }
                     else
@@ -199,7 +324,7 @@ namespace Ex03.ConsoleUI
                 }
                 else
                 {
-                    Console.WriteLine("The input must be a number");
+                    Console.WriteLine("The input must be a number, please try again");
                     continue;
                 }
             }
@@ -224,7 +349,7 @@ namespace Ex03.ConsoleUI
                 {
                     if (result < 0)
                     {
-                        Console.WriteLine("Make sure the number is positive");
+                        Console.WriteLine("Make sure the number is positive, please try again");
                         continue;
                     }
                     else
@@ -234,7 +359,7 @@ namespace Ex03.ConsoleUI
                 }
                 else
                 {
-                    Console.WriteLine("The input must be a number");
+                    Console.WriteLine("The input must be a number, please try again");
                     continue;
                 }
             }
@@ -256,7 +381,7 @@ namespace Ex03.ConsoleUI
 
                 if (!Enum.IsDefined(typeof(AggregateEnumTypes.eTypeOfFuel), userInputNumberAsString))
                 {
-                    Console.WriteLine("Ensure that is either 0 (Soler), 1 (Octane 95), 2 (Octane 96) or 3 (Octane 98)");
+                    Console.WriteLine("Ensure that is either 0 (Soler), 1 (Octane 95), 2 (Octane 96) or 3 (Octane 98), please try again");
                     break;
                 }
                 try
@@ -285,7 +410,7 @@ namespace Ex03.ConsoleUI
 
                 if (!Enum.IsDefined(typeof(AggregateEnumTypes.eStatus), userInputNumberAsString))
                 {
-                    Console.WriteLine("Ensure that is either 0 (In Repair), 1 (Repaired) or 2 (Payed For)");
+                    Console.WriteLine("Ensure that is either 0 (In Repair), 1 (Repaired) or 2 (Payed For), please try again");
                     break;
                 }
                 try

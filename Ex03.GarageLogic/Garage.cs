@@ -91,6 +91,12 @@ namespace Ex03.GarageLogic
         {
             refillVehicle(i_LicenseNumber, 0, i_AmountToRefill);
         }
+
+        public void setLicenseAndEngineVolume(object p1, object p2)
+        {
+            throw new NotImplementedException();
+        }
+
         public void refillVehicle(string i_LicenseNumber, AggregateEnumTypes.eTypeOfFuel i_eTypeOfFuel, float i_AmountToRefill)
         {
             foreach (string licenceNumber in m_GarageVehicles.Keys)
@@ -123,6 +129,17 @@ namespace Ex03.GarageLogic
                 }
             }
         }
+
+        public void setCooledandVolumeOfCargo(object p1, object p2)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void setColorAndDoors(object p1, object p2)
+        {
+            throw new NotImplementedException();
+        }
+
         private Vehicle createVehicle(AggregateEnumTypes.eTypeOfVehicles eTypeOfVehicles, string i_ModelName, string i_LicenseNumber, string i_OwnerName, string i_OwnerPhoneNumber)
         {
             Vehicle vehicle;
