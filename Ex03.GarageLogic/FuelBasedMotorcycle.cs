@@ -13,11 +13,11 @@ namespace Ex03.GarageLogic
         FuelEngine FuelBasedMotorcycleEngine = null;
         private const int c_MaxAmountOfFuel = 6;
 
-        protected FuelBasedMotorcycle(string i_ModelName, string i_LicenceNumber, string i_OwnerName, string i_OwnerPhoneNumber)
-            : base(i_ModelName, i_LicenceNumber, i_OwnerName, i_OwnerPhoneNumber)
+        internal FuelBasedMotorcycle(string i_ModelName, string i_LicenseNumber, string i_OwnerName, string i_OwnerPhoneNumber)
+            : base(i_ModelName, i_LicenseNumber, i_OwnerName, i_OwnerPhoneNumber)
         {
             FuelBasedMotorcycleEngine = new FuelEngine();
-            FuelBasedMotorcycleEngine.TypeOfFuel = AggregateEnumTypes.eTypeOfFuel.Octane_96;
+            FuelBasedMotorcycleEngine.TypeOfFuel = m_TypeOfFuel;
             FuelBasedMotorcycleEngine.MaxAmountOfFuel = c_MaxAmountOfFuel;
             base.EnergyType = FuelBasedMotorcycleEngine;
             

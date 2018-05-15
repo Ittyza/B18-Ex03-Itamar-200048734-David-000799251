@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AggregateConsoleMessages.cs" />
     <Compile Include="AggregateEnumTypes.cs" />
     <Compile Include="Car.cs" />
     <Compile Include="ElectricEngine.cs" />

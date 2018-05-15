@@ -18,7 +18,12 @@ namespace Ex03.GarageLogic
 
         public void Refuel(float amountOfFuelToFill)
         {
-           base.Refill(amountOfFuelToFill);
+            base.Refill(amountOfFuelToFill);
+        }
+
+        public override string ToString()
+        {
+            return string.Format("The type of fuel is {0}, and the amount of current fuel is {1}, and the total is {2}", TypeOfFuel.ToString(), AmountOfFuel.ToString("0.00"), MaxAmountOfFuel.ToString("0.00"));
         }
     }
 }

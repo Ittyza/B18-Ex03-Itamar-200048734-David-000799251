@@ -8,6 +8,14 @@ namespace Ex03.GarageLogic
 {
     public class AggregateEnumTypes
     {
+        public enum eTypeOfVehicles
+        {
+            FuelBasedMotorcycle = 0,
+            ElectricMotorcycle = 1,
+            FuelBasedCar = 2,
+            ElectricCar = 3,
+            FuelBasedTruck = 4
+        }
         public enum eTypeOfFuel
         {
             Soler = 0,
