@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Ex03.GarageLogic
 {
 
-    class FuelBasedMotorcycle : Car
+    class FuelBasedMotorcycle : Motorcycle
     {
         private AggregateEnumTypes.eTypeOfFuel m_TypeOfFuel = AggregateEnumTypes.eTypeOfFuel.Octane_96;
         FuelEngine FuelBasedMotorcycleEngine = null;

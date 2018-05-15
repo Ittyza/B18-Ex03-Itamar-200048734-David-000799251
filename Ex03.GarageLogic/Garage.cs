@@ -130,19 +130,29 @@ namespace Ex03.GarageLogic
             {
                 case AggregateEnumTypes.eTypeOfVehicles.FuelBasedMotorcycle:
                     vehicle = new FuelBasedMotorcycle(i_ModelName, i_LicenseNumber, i_OwnerName, i_OwnerPhoneNumber);
-                    //(vehicle as FuelBasedMotorcycle).TypeOfColor = Program.Ex03.ConsoleUI.ValidateUserInput.getColorType();
+                    (vehicle as FuelBasedMotorcycle).TypeOfLicenses = getLicenseType();
+                    (vehicle as FuelBasedMotorcycle).EngineVolume = getEngineVolume();
                     break;
                 case AggregateEnumTypes.eTypeOfVehicles.ElectricMotorcycle:
                     vehicle = new ElectricMotorcycle(i_ModelName, i_LicenseNumber, i_OwnerName, i_OwnerPhoneNumber);
+                    (vehicle as ElectricMotorcycle).TypeOfLicenses = getLicenseType();
+                    (vehicle as ElectricMotorcycle).EngineVolume = getEngineVolume();
                     break;
                 case AggregateEnumTypes.eTypeOfVehicles.FuelBasedCar:
                     vehicle = new FuelBasedCar(i_ModelName, i_LicenseNumber, i_OwnerName, i_OwnerPhoneNumber);
+                    (vehicle as FuelBasedCar).TypeOfColor = getColorType();
+                    (vehicle as FuelBasedCar).NumOfDoors = getNumberOfDoor();
                     break;
                 case AggregateEnumTypes.eTypeOfVehicles.ElectricCar:
                     vehicle = new ElectricCar(i_ModelName, i_LicenseNumber, i_OwnerName, i_OwnerPhoneNumber);
+                    (vehicle as ElectricCar).TypeOfColor = getColorType();
+                    (vehicle as ElectricCar).NumOfDoors = getNumberOfDoor();
                     break;
                 case AggregateEnumTypes.eTypeOfVehicles.FuelBasedTruck:
                     vehicle = new FuelBasedTruck(i_ModelName, i_LicenseNumber, i_OwnerName, i_OwnerPhoneNumber);
+                    (vehicle as FuelBasedTruck).IsCooled = getIsCooled();
+                    (vehicle as FuelBasedTruck).VolumeOfCargo = getVehicle();
+
                     break;
                 default:
                     vehicle = null;
@@ -151,6 +161,37 @@ namespace Ex03.GarageLogic
             }
             return vehicle;
         }
+
+        private float getVehicle()
+        {
+            throw new NotImplementedException();
+        }
+
+        private bool getIsCooled()
+        {
+            throw new NotImplementedException();
+        }
+
+        private AggregateEnumTypes.eNumOfDoors getNumberOfDoor()
+        {
+            throw new NotImplementedException();
+        }
+
+        private AggregateEnumTypes.eTypeColor getColorType()
+        {
+            throw new NotImplementedException();
+        }
+
+        private int getEngineVolume()
+        {
+            throw new NotImplementedException();
+        }
+
+        private AggregateEnumTypes.eTypeOfLicences getLicenseType()
+        {
+            throw new NotImplementedException();
+        }
+
         public void displayDictionary(Dictionary<string, Vehicle> i_GarageVehicles)
         {
             AggregateConsoleMessages.displayDictionary(i_GarageVehicles);
