@@ -3,7 +3,7 @@ using Ex03.GarageLogic;
 
 namespace Ex03.ConsoleUI
 {
-    public class UI
+    internal class UI
     {
         public UI()
         {
@@ -33,8 +33,9 @@ namespace Ex03.ConsoleUI
             switch (parsedUserInputAsEnum)
             {
                 case AggregateEnumTypes.eMenuType.Zero:
-                    //quit();
+                    ValidateUserInput.exit();
                     break;
+
                 case AggregateEnumTypes.eMenuType.One:
                     garage.addVehiclesToGarage(ValidateUserInput.validateTypeOfVehicleFromUser(), ValidateUserInput.validateModelName(), ValidateUserInput.validateLicenseNumberFromUser(), ValidateUserInput.validateOwnerNameFromUser(), ValidateUserInput.validateOwnerPhoneNumberFromUser());
                     break;

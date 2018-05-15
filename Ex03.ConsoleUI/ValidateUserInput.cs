@@ -205,6 +205,13 @@ namespace Ex03.ConsoleUI
             }
             return result;
         }
+
+        internal static void exit()
+        {
+            Console.WriteLine("Thank you, have a good day");
+            Console.ReadLine();
+            Environment.Exit(200);
+        }
     }
 }
 
