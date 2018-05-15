@@ -51,5 +51,17 @@ namespace Ex03.GarageLogic
             Four = 4,
             Five = 5
         }
+        public enum eMenuType
+        {
+            Zero,
+            One,
+            Two,
+            Three,
+            Four,
+            Five,
+            Six,
+            Seven
+        }
+
     }
 }
