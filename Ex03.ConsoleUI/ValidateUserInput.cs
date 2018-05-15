@@ -145,7 +145,7 @@ namespace Ex03.ConsoleUI
                 {
                 }
             }
-            
+
 
             return eTypeOfVehicles;
 
@@ -177,28 +177,32 @@ namespace Ex03.ConsoleUI
             return result;
         }
 
-
-        internal int validateUserMainMenuAction(string i_UserActionChoise)
+        internal static int validateUserMainMenuAction(string i_UserActionChoise)
         {
-            bool isValid = false;
             int result = 0;
-            while (!isValid)
+            bool isValid = false;
+            while(!isValid)
             {
-                if (!Int32.TryParse(i_UserActionChoise, out result))
+                if (int.TryParse(i_UserActionChoise, out result))
                 {
-                    Console.WriteLine("The input must be a number between 1 and 7{0}", Environment.NewLine);
+                    if (result < 0 || result > 7)
+                    {
+                        Console.WriteLine("The input must be a number between 1 and 7");
+                        i_UserActionChoise = Console.ReadLine();
+                        continue;
+                    }
+                    else
+                    {
+                        isValid = true;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("The input must be a number between 1 and 7");
+                    i_UserActionChoise = Console.ReadLine();
                     continue;
                 }
-
-                if (result < 1 || result > 7)
-                {
-                    Console.WriteLine("The input must be a number between 1 and 7{0}", Environment.NewLine);
-                    continue;
-                }
-
-                isValid = true;
             }
-
             return result;
         }
     }

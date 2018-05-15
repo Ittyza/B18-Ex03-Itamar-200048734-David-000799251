@@ -3,7 +3,7 @@ using Ex03.GarageLogic;
 
 namespace Ex03.ConsoleUI
 {
-    internal class UI
+    public class UI
     {
         public UI()
         {
@@ -22,11 +22,12 @@ namespace Ex03.ConsoleUI
 
             }
 
-        internal void ManageGarage(Garage garage)
+        public void ManageGarage(Garage garage)
         {
-            AggregateConsoleMessages.welcomeMessage(garage);
+            AggregateConsoleMessages.MainMenu(garage);
 
-            int userChosenFuction = int.Parse(Console.ReadLine());
+            int userChosenFuction = ValidateUserInput.validateUserMainMenuAction(Console.ReadLine());
+
             AggregateEnumTypes.eMenuType parsedUserInputAsEnum = (AggregateEnumTypes.eMenuType)Enum.Parse(typeof(AggregateEnumTypes.eMenuType), userChosenFuction.ToString());
 
             switch (parsedUserInputAsEnum)
@@ -37,8 +38,6 @@ namespace Ex03.ConsoleUI
                 case AggregateEnumTypes.eMenuType.One:
                     garage.addVehiclesToGarage(ValidateUserInput.validateTypeOfVehicleFromUser(), ValidateUserInput.validateModelName(), ValidateUserInput.validateLicenseNumberFromUser(), ValidateUserInput.validateOwnerNameFromUser(), ValidateUserInput.validateOwnerPhoneNumberFromUser());
                     break;
-                    
-
             }
         }
     }
