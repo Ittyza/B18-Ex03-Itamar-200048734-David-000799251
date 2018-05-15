@@ -119,7 +119,7 @@ namespace Ex03.ConsoleUI
             return userInputNumberAsString;
         }
 
-        internal static AggregateEnumTypes.eTypeOfVehicles validateTypeFromUser()
+        internal static AggregateEnumTypes.eTypeOfVehicles validateTypeOfVehicleFromUser()
         {
             bool userInputIsGood = false;
             string userInputNumberAsString = null;
@@ -161,7 +161,7 @@ namespace Ex03.ConsoleUI
                 bool booleanToTry = int.TryParse(Console.ReadLine(), out result);
                 if (!booleanToTry)
                 {
-                    System.Console.WriteLine("The input must be of a number, please try again {0}", Environment.NewLine);
+                    Console.WriteLine("The input must be of a number, please try again {0}", Environment.NewLine);
                     continue;
                 }
                 if (result == 6 || result == 8 || result == 10)
@@ -176,7 +176,31 @@ namespace Ex03.ConsoleUI
             }
             return result;
         }
-        
+
+
+        internal int validateUserMainMenuAction(string i_UserActionChoise)
+        {
+            bool isValid = false;
+            int result = 0;
+            while (!isValid)
+            {
+                if (!Int32.TryParse(i_UserActionChoise, out result))
+                {
+                    Console.WriteLine("The input must be a number between 1 and 7{0}", Environment.NewLine);
+                    continue;
+                }
+
+                if (result < 1 || result > 7)
+                {
+                    Console.WriteLine("The input must be a number between 1 and 7{0}", Environment.NewLine);
+                    continue;
+                }
+
+                isValid = true;
+            }
+
+            return result;
+        }
     }
 }
 
