@@ -151,8 +151,7 @@ namespace Ex03.GarageLogic
                 case AggregateEnumTypes.eTypeOfVehicles.FuelBasedTruck:
                     vehicle = new FuelBasedTruck(i_ModelName, i_LicenseNumber, i_OwnerName, i_OwnerPhoneNumber);
                     (vehicle as FuelBasedTruck).IsCooled = getIsCooled();
-                    (vehicle as FuelBasedTruck).VolumeOfCargo = getVehicle();
-
+                    (vehicle as FuelBasedTruck).VolumeOfCargo = getVolumeOfCargo();
                     break;
                 default:
                     vehicle = null;
@@ -162,7 +161,7 @@ namespace Ex03.GarageLogic
             return vehicle;
         }
 
-        private float getVehicle()
+        private float getVolumeOfCargo()
         {
             throw new NotImplementedException();
         }
