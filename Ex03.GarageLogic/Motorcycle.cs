@@ -25,7 +25,8 @@ namespace Ex03.GarageLogic
         internal AggregateEnumTypes.eTypeOfLicences TypeOfLicenses { get => m_TypeOfLicences; set => m_TypeOfLicences = value; }
         public override string ToString()
         {
-            return string.Format("The type of license is : {0} and the engine volume is is {1}", ModelName, LicenseNumber, OwnerName, OwnerPhoneNumber, TypeOfLicenses.ToString(),EngineVolume );
+            return string.Format("The model Name is {0}, The type of license is : {1}, the owner name is {2}, his phone number is {3} the license is {4}",
+                ModelName, LicenseNumber, OwnerName, OwnerPhoneNumber, TypeOfLicenses.ToString(),EngineVolume );
         }
     }
 

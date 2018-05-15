@@ -25,7 +25,8 @@ namespace Ex03.GarageLogic
         public float VolumeOfCargo { get => m_VolumeOfCargo; set => m_VolumeOfCargo = value; }
         public override string ToString()
         {
-            return string.Format("The type of license is : {0} and the engine volume is is {1}", ModelName, LicenseNumber, OwnerName, OwnerPhoneNumber, IsCooled.ToString(), VolumeOfCargo.ToString("0.00"));
+            return string.Format("The model name is {0}, The type of license is : {1}, the owner name is {2}, his phone number is {3} the truck is cooled; {4} and the volume of the cargo is {5}}"
+                , ModelName, LicenseNumber, OwnerName, OwnerPhoneNumber, IsCooled.ToString(), VolumeOfCargo.ToString("0.00"));
         }
 
 

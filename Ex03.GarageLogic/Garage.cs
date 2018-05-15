@@ -20,7 +20,7 @@ namespace Ex03.GarageLogic
 
         public void addVehiclesToGarage(AggregateEnumTypes.eTypeOfVehicles eTypeOfVehicles, string i_ModelName, string i_LicenseNumber, string i_OwnerName, string i_OwnerPhoneNumber)
         {
-            Vehicle vehicleToAdd = createCars(eTypeOfVehicles, i_ModelName, i_LicenseNumber, i_OwnerName, i_OwnerPhoneNumber);
+            Vehicle vehicleToAdd = createVehicle(eTypeOfVehicles, i_ModelName, i_LicenseNumber, i_OwnerName, i_OwnerPhoneNumber);
             if (m_GarageVehicles.ContainsKey(i_LicenseNumber))
             {
                 vehicleToAdd.EStatus = AggregateEnumTypes.eStatus.InRepair;
@@ -31,7 +31,7 @@ namespace Ex03.GarageLogic
                 GarageVehicles.Add(i_LicenseNumber, vehicleToAdd);
             }
         }
-        private Dictionary<string, Vehicle> dictionaryOfVehiclesInGarageBasedOnStatus(AggregateEnumTypes.eStatus i_eStatus)
+        public Dictionary<string, Vehicle> dictionaryOfVehiclesInGarageBasedOnStatus(AggregateEnumTypes.eStatus i_eStatus)
         {
             Dictionary<string, Vehicle> vehiclesInGarage = new Dictionary<string, Vehicle>();
             foreach (Vehicle vehicle in m_GarageVehicles.Values)
@@ -43,7 +43,7 @@ namespace Ex03.GarageLogic
             }
             return vehiclesInGarage;
         }
-        private void changeStatus(string i_LicenseNumber, AggregateEnumTypes.eStatus i_eStatus)
+        public void changeStatus(string i_LicenseNumber, AggregateEnumTypes.eStatus i_eStatus)
         {
             foreach (string licenceNumber in m_GarageVehicles.Keys)
             {
@@ -57,7 +57,7 @@ namespace Ex03.GarageLogic
                 }
             }
         }
-        internal void inflateWheels(string i_LicenseNumber)
+        public void inflateWheels(string i_LicenseNumber)
         {
             foreach (string licenceNumber in m_GarageVehicles.Keys)
             {
@@ -78,11 +78,11 @@ namespace Ex03.GarageLogic
                 }
             }
         }
-        internal void refillVehicle(string i_LicenseNumber, float i_AmountToRefill)
+        public void refillVehicle(string i_LicenseNumber, float i_AmountToRefill)
         {
             refillVehicle(i_LicenseNumber, 0, i_AmountToRefill);
         }
-        internal void refillVehicle(string i_LicenseNumber, AggregateEnumTypes.eTypeOfFuel i_eTypeOfFuel, float i_AmountToRefill)
+        public void refillVehicle(string i_LicenseNumber, AggregateEnumTypes.eTypeOfFuel i_eTypeOfFuel, float i_AmountToRefill)
         {
             foreach (string licenceNumber in m_GarageVehicles.Keys)
             {
@@ -114,13 +114,14 @@ namespace Ex03.GarageLogic
                 }
             }
         }
-        private Vehicle createCars(AggregateEnumTypes.eTypeOfVehicles eTypeOfVehicles, string i_ModelName, string i_LicenseNumber, string i_OwnerName, string i_OwnerPhoneNumber)
+        private Vehicle createVehicle(AggregateEnumTypes.eTypeOfVehicles eTypeOfVehicles, string i_ModelName, string i_LicenseNumber, string i_OwnerName, string i_OwnerPhoneNumber)
         {
             Vehicle vehicle;
             switch (eTypeOfVehicles)
             {
                 case AggregateEnumTypes.eTypeOfVehicles.FuelBasedMotorcycle:
                     vehicle = new FuelBasedMotorcycle(i_ModelName, i_LicenseNumber, i_OwnerName, i_OwnerPhoneNumber);
+                    //(vehicle as FuelBasedMotorcycle).TypeOfColor = Program.Ex03.ConsoleUI.ValidateUserInput.getColorType();
                     break;
                 case AggregateEnumTypes.eTypeOfVehicles.ElectricMotorcycle:
                     vehicle = new ElectricMotorcycle(i_ModelName, i_LicenseNumber, i_OwnerName, i_OwnerPhoneNumber);
@@ -141,11 +142,11 @@ namespace Ex03.GarageLogic
             }
             return vehicle;
         }
-        internal void displayDictionary()
+        public void displayDictionary(Dictionary<string, Vehicle> i_GarageVehicles)
         {
-            AggregateConsoleMessages.displayDictionary(m_GarageVehicles);
+            AggregateConsoleMessages.displayDictionary(i_GarageVehicles);
         }
-        internal void displayVehiclesInformation()
+        public void displayVehiclesInformation()
         {
             AggregateConsoleMessages.displayVehicle(m_GarageVehicles);
         }

@@ -26,7 +26,8 @@ namespace Ex03.GarageLogic
         internal AggregateEnumTypes.eTypeColor TypeOfColor { get => m_TypeOfColor; set => m_TypeOfColor = value; }
         public override string ToString()
         {
-            return string.Format("The type of license is : {0} and the engine volume is is {1}", ModelName, LicenseNumber, OwnerName, OwnerPhoneNumber, NumOfDoors.ToString(), TypeOfColor.ToString());
+            return string.Format("The model Name is {0}, The type of license is : {1}, the owner name is {2}, his phone number is {3} the car has {4} doors and the color is {5}}",
+                ModelName, LicenseNumber, OwnerName, OwnerPhoneNumber, NumOfDoors.ToString(), TypeOfColor.ToString());
         }
     }
  
