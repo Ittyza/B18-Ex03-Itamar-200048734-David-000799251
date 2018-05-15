@@ -163,7 +163,7 @@ namespace Ex03.GarageLogic
 
         private float getVolumeOfCargo()
         {
-            throw new NotImplementedException();
+            return Ex03.ConsoleUi
         }
 
         private bool getIsCooled()

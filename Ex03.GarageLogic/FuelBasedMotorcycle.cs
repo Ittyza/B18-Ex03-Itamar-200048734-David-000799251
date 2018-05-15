@@ -21,7 +21,6 @@ namespace Ex03.GarageLogic
             FuelBasedMotorcycleEngine.MaxAmountOfFuel = c_MaxAmountOfFuel;
             base.EnergyType = FuelBasedMotorcycleEngine;
             
-
         }
 
 
