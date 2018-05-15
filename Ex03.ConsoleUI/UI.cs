@@ -26,7 +26,7 @@ namespace Ex03.ConsoleUI
         {
             AggregateConsoleMessages.MainMenu(garage);
 
-            int userChosenFuction = ValidateUserInput.validateUserMainMenuAction(Console.ReadLine());
+            int userChosenFuction = ValidateUserInput.validateUserMainMenuAction();
 
             AggregateEnumTypes.eMenuType parsedUserInputAsEnum = (AggregateEnumTypes.eMenuType)Enum.Parse(typeof(AggregateEnumTypes.eMenuType), userChosenFuction.ToString());
 
