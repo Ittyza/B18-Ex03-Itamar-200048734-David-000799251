@@ -65,21 +65,6 @@ namespace Ex03.ConsoleUI
             return userInputNumberAsString;
         }
 
-        internal static float validateAmountToRefill()
-        {
-            throw new NotImplementedException();
-        }
-
-        internal static AggregateEnumTypes.eTypeOfFuel validateTypeOfFuelFromUser()
-        {
-            throw new NotImplementedException();
-        }
-
-        internal static string statusFromUser()
-        {
-            throw new NotImplementedException();
-        }
-
         internal static string validateOwnerNameFromUser()
         {
             bool userInputIsGood = false;
@@ -192,19 +177,19 @@ namespace Ex03.ConsoleUI
             return result;
         }
 
-
         internal static int validateUserMainMenuAction()
         {
             int result = 0;
             bool isValid = false;
-            while (!isValid)
+            string userActionChoise;
+            while(!isValid)
             {
-                if (int.TryParse(i_UserActionChoise, out result))
+                userActionChoise = Console.ReadLine();
+                if (int.TryParse(userActionChoise, out result))
                 {
                     if (result < 0 || result > 7)
                     {
-                        Console.WriteLine("The input must be a number between 1 and 7");
-                        i_UserActionChoise = Console.ReadLine();
+                        Console.WriteLine("Make sure the number is between 0 and 7");
                         continue;
                     }
                     else
@@ -214,12 +199,18 @@ namespace Ex03.ConsoleUI
                 }
                 else
                 {
-                    Console.WriteLine("The input must be a number between 1 and 7");
-                    i_UserActionChoise = Console.ReadLine();
+                    Console.WriteLine("The input must be a number between 0 and 7");
                     continue;
                 }
             }
             return result;
+        }
+
+        internal static void exit()
+        {
+            Console.WriteLine("Thank you, have a good day");
+            Console.ReadLine();
+            Environment.Exit(200);
         }
     }
 }

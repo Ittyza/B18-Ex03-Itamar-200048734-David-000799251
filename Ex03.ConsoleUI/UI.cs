@@ -33,8 +33,9 @@ namespace Ex03.ConsoleUI
             switch (parsedUserInputAsEnum)
             {
                 case AggregateEnumTypes.eMenuType.Zero:
-                    //quit();
+                    ValidateUserInput.exit();
                     break;
+
                 case AggregateEnumTypes.eMenuType.One:
                     garage.addVehiclesToGarage(ValidateUserInput.validateTypeOfVehicleFromUser(), ValidateUserInput.validateModelName(), ValidateUserInput.validateLicenseNumberFromUser(), ValidateUserInput.validateOwnerNameFromUser(), ValidateUserInput.validateOwnerPhoneNumberFromUser());
                     break;
