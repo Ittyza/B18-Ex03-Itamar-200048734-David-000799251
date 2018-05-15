@@ -37,6 +37,8 @@ namespace Ex03.ConsoleUI
                     break;
 
                 case AggregateEnumTypes.eMenuType.One:
+                    AggregateEnumTypes.eTypeOfVehicles TypeOfVehicle = ValidateUserInput.validateTypeOfVehicleFromUser();
+                    getParamFromUser(TypeOfVehicle , garage)
                     garage.addVehiclesToGarage(ValidateUserInput.validateTypeOfVehicleFromUser(), ValidateUserInput.validateModelName(), ValidateUserInput.validateLicenseNumberFromUser(), ValidateUserInput.validateOwnerNameFromUser(), ValidateUserInput.validateOwnerPhoneNumberFromUser());
                     ManageGarage(garage);
                     break;
@@ -69,6 +71,28 @@ namespace Ex03.ConsoleUI
                     break;
 
 
+            }
+        }
+
+        private void getParamFromUser(AggregateEnumTypes.eTypeOfVehicles typeOfVehicle, Garage garage)
+        {
+            switch (typeOfVehicle)
+            {
+                case AggregateEnumTypes.eTypeOfVehicles.FuelBasedMotorcycle:
+                    garage.setLicenseAndEngineVolume(ValidateUserInput.LicenseTypeFromUser(), ValidateUserInput.EngineVolume());
+                    break;
+                case AggregateEnumTypes.eTypeOfVehicles.ElectricMotorcycle:
+                    garage.setLicenseAndEngineVolume(ValidateUserInput.LicenseTypeFromUser(), ValidateUserInput.EngineVolume());
+                    break;
+                case AggregateEnumTypes.eTypeOfVehicles.FuelBasedCar:
+                    garage.setColorAndDoors(ValidateUserInput.typeOfColor(), ValidateUserInput.numberOfDoors());
+                    break;
+                case AggregateEnumTypes.eTypeOfVehicles.ElectricCar:
+                    garage.setColorAndDoors(ValidateUserInput.typeOfColor(), ValidateUserInput.numberOfDoors());
+                    break;
+                case AggregateEnumTypes.eTypeOfVehicles.FuelBasedTruck:
+                    garage.setCooledandVolumeOfCargo(ValidateUserInput.isCooled(), ValidateUserInput.volumeOfCargo());
+                    break;
             }
         }
     }
