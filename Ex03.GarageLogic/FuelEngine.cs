@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ex03.GarageLogic
 {
-    class FuelEngine : Refillable
+    internal class FuelEngine : Refillable
     {
         private AggregateEnumTypes.eTypeOfFuel eTypeOfFuel;
 
@@ -18,7 +18,7 @@ namespace Ex03.GarageLogic
 
         public void Refuel(float amountOfFuelToFill)
         {
-            base.Refill(amountOfFuelToFill);
+            Refill(amountOfFuelToFill);
         }
 
         public override string ToString()

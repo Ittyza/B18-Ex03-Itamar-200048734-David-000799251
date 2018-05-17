@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace Ex03.GarageLogic
 {
-
-    class FuelBasedMotorcycle : Motorcycle
+    internal class FuelBasedMotorcycle : Motorcycle
     {
-        private AggregateEnumTypes.eTypeOfFuel m_TypeOfFuel = AggregateEnumTypes.eTypeOfFuel.Octane_96;
-        FuelEngine FuelBasedMotorcycleEngine = null;
         private const int c_MaxAmountOfFuel = 6;
+        private AggregateEnumTypes.eTypeOfFuel m_TypeOfFuel = AggregateEnumTypes.eTypeOfFuel.Octane_96;
+        protected FuelEngine FuelBasedMotorcycleEngine = null;
 
         internal FuelBasedMotorcycle(string i_ModelName, string i_LicenseNumber, string i_OwnerName, string i_OwnerPhoneNumber)
             : base(i_ModelName, i_LicenseNumber, i_OwnerName, i_OwnerPhoneNumber)
@@ -19,11 +18,9 @@ namespace Ex03.GarageLogic
             FuelBasedMotorcycleEngine = new FuelEngine();
             FuelBasedMotorcycleEngine.TypeOfFuel = m_TypeOfFuel;
             FuelBasedMotorcycleEngine.MaxAmountOfFuel = c_MaxAmountOfFuel;
-            base.EnergyType = FuelBasedMotorcycleEngine;
-            
+            EnergyType = FuelBasedMotorcycleEngine;
+            TypeOfLicenses = AggregateEnumTypes.eTypeOfLicences.A;
+            EngineVolume = 0;
         }
-
-
-
     }
 }

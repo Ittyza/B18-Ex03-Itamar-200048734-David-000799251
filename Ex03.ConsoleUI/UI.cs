@@ -13,21 +13,16 @@ namespace Ex03.ConsoleUI
         {
             Garage garage = new Garage();
 
-            Console.WriteLine(
-                "Please choose a name for your Garage");
-
+            Console.WriteLine("Please choose a name for your Garage");
             garage.GarageName = Console.ReadLine();
-
             ManageGarage(garage);
-
-            }
+        }
 
         internal void ManageGarage(Garage garage)
         {
             AggregateConsoleMessages.MainMenu(garage);
-
-            int userChosenFuction = ValidateUserInput.validateUserMainMenuAction();
-
+            int userChosenFuction = ValidateUserInput.validateUserMainMenuAction(7);
+            string m_LicenseNumber = string.Empty;
             AggregateEnumTypes.eMenuType parsedUserInputAsEnum = (AggregateEnumTypes.eMenuType)Enum.Parse(typeof(AggregateEnumTypes.eMenuType), userChosenFuction.ToString());
 
             switch (parsedUserInputAsEnum)
@@ -37,29 +32,46 @@ namespace Ex03.ConsoleUI
                     break;
 
                 case AggregateEnumTypes.eMenuType.One:
-                    AggregateEnumTypes.eTypeOfVehicles TypeOfVehicle = ValidateUserInput.validateTypeOfVehicleFromUser();
-                    getParamFromUser(TypeOfVehicle, garage);
-                    garage.addVehiclesToGarage(ValidateUserInput.validateTypeOfVehicleFromUser(), ValidateUserInput.validateModelName(), ValidateUserInput.validateLicenseNumberFromUser(), ValidateUserInput.validateOwnerNameFromUser(), ValidateUserInput.validateOwnerPhoneNumberFromUser());
+                    AggregateEnumTypes.eTypeOfVehicles TypeOfVehicle = (AggregateEnumTypes.eTypeOfVehicles)ValidateUserInput.validateTypeFromUser<AggregateEnumTypes.eTypeOfVehicles>();
+                    Console.WriteLine(TypeOfVehicle);
+                    Console.WriteLine(ValidateUserInput.C_addVehicleModel);
+                    string m_ModelName = ValidateUserInput.validateStringFromUser();
+                    Console.WriteLine(ValidateUserInput.C_addLicenseNumber);
+                    m_LicenseNumber = ValidateUserInput.validateStringAsNumberFromUser();
+                    Console.WriteLine(ValidateUserInput.C_addOwnerName);
+                    string m_OwnerName = ValidateUserInput.validateStringFromUser();
+                    Console.WriteLine(ValidateUserInput.C_addOwnerNumber);
+                    string m_OwnerNumber = ValidateUserInput.validateStringAsNumberFromUser();
+                    garage.addVehiclesToGarage(TypeOfVehicle, m_ModelName, m_LicenseNumber, m_OwnerName, m_OwnerNumber);
+                    getParamFromUser(TypeOfVehicle, garage, m_LicenseNumber);
                     ManageGarage(garage);
                     break;
                 case AggregateEnumTypes.eMenuType.Two:
-                    garage.displayVehiclesInformation();
+                    garage.displayDictionary();
                     ManageGarage(garage);
                     break;
                 case AggregateEnumTypes.eMenuType.Three:
-                    garage.changeStatus(ValidateUserInput.validateLicenseNumberFromUser() ,ValidateUserInput.statusFromUser());
+                    Console.WriteLine(ValidateUserInput.C_addLicenseNumber);
+                    m_LicenseNumber = ValidateUserInput.validateStringAsNumberFromUser();
+                    garage.changeStatus(m_LicenseNumber, (AggregateEnumTypes.eStatus)ValidateUserInput.validateTypeFromUser<AggregateEnumTypes.eStatus>());
                     ManageGarage(garage);
                     break;
                 case AggregateEnumTypes.eMenuType.Four:
-                    garage.inflateWheels(ValidateUserInput.validateLicenseNumberFromUser());
+                    Console.WriteLine(ValidateUserInput.C_addLicenseNumber);
+                    m_LicenseNumber = ValidateUserInput.validateStringAsNumberFromUser();
+                    garage.inflateWheels(m_LicenseNumber);
                     ManageGarage(garage);
                     break;
                 case AggregateEnumTypes.eMenuType.Five:
-                    garage.refillVehicle(ValidateUserInput.validateLicenseNumberFromUser(), ValidateUserInput.validateTypeOfFuelFromUser(),ValidateUserInput.validateAmountToRefill());
+                    Console.WriteLine(ValidateUserInput.C_addLicenseNumber);
+                    m_LicenseNumber = ValidateUserInput.validateStringAsNumberFromUser();
+                    garage.refillVehicle(m_LicenseNumber, (AggregateEnumTypes.eTypeOfFuel)ValidateUserInput.validateTypeFromUser<AggregateEnumTypes.eTypeOfFuel>(), ValidateUserInput.validateAmountToRefill());
                     ManageGarage(garage);
                     break;
                 case AggregateEnumTypes.eMenuType.Six:
-                    garage.refillVehicle(ValidateUserInput.validateLicenseNumberFromUser(), ValidateUserInput.validateAmountToRefill());
+                    Console.WriteLine(ValidateUserInput.C_addLicenseNumber);
+                    m_LicenseNumber = ValidateUserInput.validateStringAsNumberFromUser();
+                    garage.refillVehicle(m_LicenseNumber, ValidateUserInput.validateAmountToRefill());
                     ManageGarage(garage);
                     break;
                 case AggregateEnumTypes.eMenuType.Seven:
@@ -69,32 +81,47 @@ namespace Ex03.ConsoleUI
                 default:
                     ManageGarage(garage);
                     break;
-
-
             }
         }
 
-        private void getParamFromUser(AggregateEnumTypes.eTypeOfVehicles typeOfVehicle, Garage garage)
+        private void getParamFromUser(AggregateEnumTypes.eTypeOfVehicles i_TypeOfVehicle, Garage i_Garage, string i_LicenseNumber)
         {
-            switch (typeOfVehicle)
+            switch (i_TypeOfVehicle)
             {
                 case AggregateEnumTypes.eTypeOfVehicles.FuelBasedMotorcycle:
-                    garage.setLicenseAndEngineVolume(ValidateUserInput.validateLicenseTypeFromUser(), ValidateUserInput.validateEngineVolume());
+                    AggregateConsoleMessages.SetLicenseType();
+                    i_Garage.setParameterOfType<AggregateEnumTypes.eTypeOfLicences>(ValidateUserInput.validateTypeFromUser<AggregateEnumTypes.eTypeOfLicences>(), i_LicenseNumber, i_TypeOfVehicle);
+                    AggregateConsoleMessages.SetVolumeEngine();
+                    i_Garage.setParameterOfType<int>(ValidateUserInput.validateVolume<int>(), i_LicenseNumber, i_TypeOfVehicle);
                     break;
                 case AggregateEnumTypes.eTypeOfVehicles.ElectricMotorcycle:
-                    garage.setLicenseAndEngineVolume(ValidateUserInput.validateLicenseTypeFromUser(), ValidateUserInput.validateEngineVolume());
+                    AggregateConsoleMessages.SetLicenseType();
+                    i_Garage.setParameterOfType<AggregateEnumTypes.eTypeOfLicences>(ValidateUserInput.validateTypeFromUser<AggregateEnumTypes.eTypeOfLicences>(), i_LicenseNumber, i_TypeOfVehicle);
+                    AggregateConsoleMessages.SetVolumeEngine();
+                    i_Garage.setParameterOfType<int>(ValidateUserInput.validateVolume<int>(), i_LicenseNumber, i_TypeOfVehicle);
                     break;
                 case AggregateEnumTypes.eTypeOfVehicles.FuelBasedCar:
-                    garage.setColorAndDoors(ValidateUserInput.validateTypeOfColor(), ValidateUserInput.validateNumberOfDoors());
+                    AggregateConsoleMessages.SetColorType();
+                    i_Garage.setParameterOfType<AggregateEnumTypes.eTypeColor>(ValidateUserInput.validateTypeFromUser<AggregateEnumTypes.eTypeColor>(), i_LicenseNumber, i_TypeOfVehicle);
+                    AggregateConsoleMessages.SetDoorsType();
+                    i_Garage.setParameterOfType<AggregateEnumTypes.eNumOfDoors>(ValidateUserInput.validateTypeFromUser<AggregateEnumTypes.eNumOfDoors>(), i_LicenseNumber, i_TypeOfVehicle);
                     break;
                 case AggregateEnumTypes.eTypeOfVehicles.ElectricCar:
-                    garage.setColorAndDoors(ValidateUserInput.validateTypeOfColor(), ValidateUserInput.validateNumberOfDoors());
+                    AggregateConsoleMessages.SetColorType();
+                    i_Garage.setParameterOfType<AggregateEnumTypes.eTypeColor>(ValidateUserInput.validateTypeFromUser<AggregateEnumTypes.eTypeColor>(), i_LicenseNumber, i_TypeOfVehicle);
+                    AggregateConsoleMessages.SetDoorsType();
+                    i_Garage.setParameterOfType<AggregateEnumTypes.eNumOfDoors>(ValidateUserInput.validateTypeFromUser<AggregateEnumTypes.eNumOfDoors>(), i_LicenseNumber, i_TypeOfVehicle);
                     break;
                 case AggregateEnumTypes.eTypeOfVehicles.FuelBasedTruck:
-                    garage.setCooledandVolumeOfCargo(ValidateUserInput.validateIsCooled(), ValidateUserInput.validateVolumeOfCargo());
+                    AggregateConsoleMessages.SetIsCooledType();
+                    i_Garage.setParameterOfType<AggregateEnumTypes.eIsCooled>(ValidateUserInput.validateTypeFromUser<AggregateEnumTypes.eIsCooled>(), i_LicenseNumber, i_TypeOfVehicle);
+                    AggregateConsoleMessages.setVolumeOfCargo();
+                    i_Garage.setParameterOfType<float>(int.Parse(ValidateUserInput.validateVolume<float>().ToString()), i_LicenseNumber, i_TypeOfVehicle);
                     break;
             }
+
+            AggregateConsoleMessages.setWheelManifactures();
+            i_Garage.setParameterOfType<string>(ValidateUserInput.validateStringFromUser(), i_LicenseNumber);
         }
     }
-
 }

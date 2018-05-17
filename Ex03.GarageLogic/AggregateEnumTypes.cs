@@ -17,6 +17,7 @@ namespace Ex03.GarageLogic
             ElectricCar = 3,
             FuelBasedTruck = 4
         }
+
         public enum eTypeOfFuel
         {
             Soler = 0,
@@ -24,12 +25,14 @@ namespace Ex03.GarageLogic
             Octane_96 = 2,
             Octane_98 = 3
         }
+
         public enum eStatus
         {
             InRepair = 0,
             Repaired = 1,
             PayedFor = 2
         }
+
         public enum eTypeOfLicences
         {
             A = 0,
@@ -37,6 +40,7 @@ namespace Ex03.GarageLogic
             B1 = 2,
             B2 = 3
         }
+
         public enum eTypeColor
         {
             Gray = 1,
@@ -44,6 +48,7 @@ namespace Ex03.GarageLogic
             White = 3,
             Black = 4
         }
+
         public enum eNumOfDoors
         {
             Two = 2,
@@ -51,6 +56,7 @@ namespace Ex03.GarageLogic
             Four = 4,
             Five = 5
         }
+
         public enum eMenuType
         {
             Zero,
@@ -62,6 +68,7 @@ namespace Ex03.GarageLogic
             Six,
             Seven
         }
+
         public enum eIsCooled
         {
             No = 0,

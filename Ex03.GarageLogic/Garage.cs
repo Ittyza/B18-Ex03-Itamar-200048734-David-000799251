@@ -9,12 +9,12 @@ namespace Ex03.GarageLogic
     public class Garage
     {
         private Dictionary<string, Vehicle> m_GarageVehicles;
-        private String m_garageName;
+        private string m_garageName;
 
         public Dictionary<string, Vehicle> GarageVehicles { get => m_GarageVehicles; set => m_GarageVehicles = value; }
+
         public string GarageName { get => m_garageName; set => m_garageName = value; }
 
-        // To Implement
         public Garage()
         {
             m_GarageVehicles = new Dictionary<string, Vehicle>();
@@ -34,38 +34,45 @@ namespace Ex03.GarageLogic
                 GarageVehicles.Add(i_LicenseNumber, vehicleToAdd);
             }
         }
+
         public Dictionary<string, Vehicle> dictionaryOfVehiclesInGarageBasedOnStatus(AggregateEnumTypes.eStatus i_eStatus)
         {
             Dictionary<string, Vehicle> vehiclesInGarage = new Dictionary<string, Vehicle>();
-            foreach (Vehicle vehicle in m_GarageVehicles.Values)
+            foreach (Vehicle vehicle in GarageVehicles.Values)
             {
                 if (i_eStatus == vehicle.EStatus)
                 {
                     vehiclesInGarage.Add(vehicle.LicenseNumber, vehicle);
                 }
             }
-            return vehiclesInGarage;
-        }
 
-        public void changeStatus(string v1, string v2)
-        {
-            throw new NotImplementedException();
+            return vehiclesInGarage;
         }
 
         public void changeStatus(string i_LicenseNumber, AggregateEnumTypes.eStatus i_eStatus)
         {
-            foreach (string licenceNumber in m_GarageVehicles.Keys)
+            if (GarageVehicles.Count > 0)
             {
-                if (licenceNumber.Equals(i_LicenseNumber))
+                foreach (string licenceNumber in GarageVehicles.Keys)
                 {
-                    m_GarageVehicles[i_LicenseNumber].EStatus = i_eStatus;
-                }
-                else
-                {
-                    AggregateConsoleMessages.vehicleIsNotInTheGarage();
+                    if (licenceNumber.Equals(i_LicenseNumber))
+                    {
+                        GarageVehicles[i_LicenseNumber].EStatus = i_eStatus;
+                        AggregateConsoleMessages.StatusChanged();
+                        break;
+                    }
+                    else
+                    {
+                        AggregateConsoleMessages.licenseIsNotInTheGarage();
+                    }
                 }
             }
+            else
+            {
+                AggregateConsoleMessages.vehicleIsNotInTheGarage();
+            }
         }
+
         public void inflateWheels(string i_LicenseNumber)
         {
             foreach (string licenceNumber in m_GarageVehicles.Keys)
@@ -75,6 +82,7 @@ namespace Ex03.GarageLogic
                     if (m_GarageVehicles[i_LicenseNumber].Wheels.Length > 0)
                     {
                         m_GarageVehicles[i_LicenseNumber].setWheels(m_GarageVehicles[i_LicenseNumber].Wheels[0].MaxAirPressureRecommended);
+                        AggregateConsoleMessages.wheelsSetToMax();
                     }
                     else
                     {
@@ -87,14 +95,10 @@ namespace Ex03.GarageLogic
                 }
             }
         }
+
         public void refillVehicle(string i_LicenseNumber, float i_AmountToRefill)
         {
             refillVehicle(i_LicenseNumber, 0, i_AmountToRefill);
-        }
-
-        public void setLicenseAndEngineVolume(object p1, object p2)
-        {
-            throw new NotImplementedException();
         }
 
         public void refillVehicle(string i_LicenseNumber, AggregateEnumTypes.eTypeOfFuel i_eTypeOfFuel, float i_AmountToRefill)
@@ -108,6 +112,8 @@ namespace Ex03.GarageLogic
                         if ((m_GarageVehicles[i_LicenseNumber].EnergyType as FuelEngine).TypeOfFuel.Equals(i_eTypeOfFuel))
                         {
                             (m_GarageVehicles[i_LicenseNumber].EnergyType as FuelEngine).Refuel(i_AmountToRefill);
+                            AggregateConsoleMessages.vehicleWasRefilled(i_LicenseNumber, i_eTypeOfFuel, i_AmountToRefill);
+                            break;
                         }
                         else
                         {
@@ -130,14 +136,100 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public void setCooledandVolumeOfCargo(object p1, object p2)
+        public void setParameterOfType<T>(string eTypeOfAggregateEnum, string i_LicenseNumber)
         {
-            throw new NotImplementedException();
+            Vehicle vehicleToBeSet = null;
+            foreach (Vehicle vehicle in GarageVehicles.Values)
+            {
+                if (i_LicenseNumber.Equals(vehicle.LicenseNumber))
+                {
+                    vehicleToBeSet = vehicle;
+                }
+            }
+
+            if(vehicleToBeSet.ManifactureWheels.Equals(string.Empty))
+            {
+                vehicleToBeSet.ManifactureWheels = eTypeOfAggregateEnum;
+            }
         }
 
-        public void setColorAndDoors(object p1, object p2)
+        public void setParameterOfType<T>(int eTypeOfAggregateEnum, string i_LicenseNumber, AggregateEnumTypes.eTypeOfVehicles i_TypeOfVehicle)
         {
-            throw new NotImplementedException();
+            Vehicle vehicleToBeSet = null;
+            foreach (Vehicle vehicle in GarageVehicles.Values)
+            {
+                if (i_LicenseNumber.Equals(vehicle.LicenseNumber))
+                {
+                    vehicleToBeSet = vehicle;
+                }
+            }
+
+            switch (i_TypeOfVehicle)
+            {
+                case AggregateEnumTypes.eTypeOfVehicles.FuelBasedMotorcycle:
+                    if (typeof(T) == typeof(AggregateEnumTypes.eTypeOfLicences))
+                    {
+                        (vehicleToBeSet as FuelBasedMotorcycle).TypeOfLicenses = (AggregateEnumTypes.eTypeOfLicences)eTypeOfAggregateEnum;
+                    }
+
+                    if (typeof(T) == typeof(int))
+                    {
+                        (vehicleToBeSet as FuelBasedMotorcycle).EngineVolume = eTypeOfAggregateEnum;
+                    }
+
+                    break;
+                case AggregateEnumTypes.eTypeOfVehicles.ElectricMotorcycle:
+                    if (typeof(T) == typeof(AggregateEnumTypes.eTypeOfLicences))
+                    {
+                        (vehicleToBeSet as ElectricMotorcycle).TypeOfLicenses = (AggregateEnumTypes.eTypeOfLicences)eTypeOfAggregateEnum;
+                    }
+
+                    if (typeof(T) == typeof(int))
+                    {
+                        (vehicleToBeSet as ElectricMotorcycle).EngineVolume = eTypeOfAggregateEnum;
+                    }
+
+                    break;
+                case AggregateEnumTypes.eTypeOfVehicles.FuelBasedCar:
+                    if (typeof(T) == typeof(AggregateEnumTypes.eTypeColor))
+                    {
+                        (vehicleToBeSet as FuelBasedCar).TypeOfColor = (AggregateEnumTypes.eTypeColor)eTypeOfAggregateEnum;
+                    }
+
+                    if (typeof(T) == typeof(AggregateEnumTypes.eNumOfDoors))
+                    {
+                        (vehicleToBeSet as FuelBasedCar).NumOfDoors = (AggregateEnumTypes.eNumOfDoors)eTypeOfAggregateEnum;
+                    }
+
+                    break;
+                case AggregateEnumTypes.eTypeOfVehicles.ElectricCar:
+                    if (typeof(T) == typeof(AggregateEnumTypes.eTypeColor))
+                    {
+                        (vehicleToBeSet as ElectricCar).TypeOfColor = (AggregateEnumTypes.eTypeColor)eTypeOfAggregateEnum;
+                    }
+
+                    if (typeof(T) == typeof(AggregateEnumTypes.eNumOfDoors))
+                    {
+                        (vehicleToBeSet as ElectricCar).NumOfDoors = (AggregateEnumTypes.eNumOfDoors)eTypeOfAggregateEnum;
+                    }
+
+                    break;
+                case AggregateEnumTypes.eTypeOfVehicles.FuelBasedTruck:
+                    if (typeof(T) == typeof(AggregateEnumTypes.eIsCooled))
+                    {
+                        (vehicleToBeSet as FuelBasedTruck).IsCooled = (AggregateEnumTypes.eIsCooled)eTypeOfAggregateEnum;
+                    }
+
+                    if (typeof(T) == typeof(float))
+                    {
+                        (vehicleToBeSet as FuelBasedTruck).VolumeOfCargo = float.Parse(eTypeOfAggregateEnum.ToString());
+                    }
+
+                    break;
+                default:
+                    vehicleToBeSet = null;
+                    break;
+            }
         }
 
         private Vehicle createVehicle(AggregateEnumTypes.eTypeOfVehicles eTypeOfVehicles, string i_ModelName, string i_LicenseNumber, string i_OwnerName, string i_OwnerPhoneNumber)
@@ -147,75 +239,35 @@ namespace Ex03.GarageLogic
             {
                 case AggregateEnumTypes.eTypeOfVehicles.FuelBasedMotorcycle:
                     vehicle = new FuelBasedMotorcycle(i_ModelName, i_LicenseNumber, i_OwnerName, i_OwnerPhoneNumber);
-                    (vehicle as FuelBasedMotorcycle).TypeOfLicenses = getLicenseType();
-                    (vehicle as FuelBasedMotorcycle).EngineVolume = getEngineVolume();
                     break;
                 case AggregateEnumTypes.eTypeOfVehicles.ElectricMotorcycle:
                     vehicle = new ElectricMotorcycle(i_ModelName, i_LicenseNumber, i_OwnerName, i_OwnerPhoneNumber);
-                    (vehicle as ElectricMotorcycle).TypeOfLicenses = getLicenseType();
-                    (vehicle as ElectricMotorcycle).EngineVolume = getEngineVolume();
                     break;
                 case AggregateEnumTypes.eTypeOfVehicles.FuelBasedCar:
                     vehicle = new FuelBasedCar(i_ModelName, i_LicenseNumber, i_OwnerName, i_OwnerPhoneNumber);
-                    (vehicle as FuelBasedCar).TypeOfColor = getColorType();
-                    (vehicle as FuelBasedCar).NumOfDoors = getNumberOfDoor();
                     break;
                 case AggregateEnumTypes.eTypeOfVehicles.ElectricCar:
                     vehicle = new ElectricCar(i_ModelName, i_LicenseNumber, i_OwnerName, i_OwnerPhoneNumber);
-                    (vehicle as ElectricCar).TypeOfColor = getColorType();
-                    (vehicle as ElectricCar).NumOfDoors = getNumberOfDoor();
                     break;
                 case AggregateEnumTypes.eTypeOfVehicles.FuelBasedTruck:
                     vehicle = new FuelBasedTruck(i_ModelName, i_LicenseNumber, i_OwnerName, i_OwnerPhoneNumber);
-                    (vehicle as FuelBasedTruck).IsCooled = getIsCooled();
-                    (vehicle as FuelBasedTruck).VolumeOfCargo = getVolumeOfCargo();
                     break;
                 default:
                     vehicle = null;
                     break;
-
             }
+
             return vehicle;
         }
 
-        private float getVolumeOfCargo()
+        public void displayDictionary()
         {
-            throw new NotImplementedException();
+            AggregateConsoleMessages.displayDictionary(m_GarageVehicles);
         }
 
-        private bool getIsCooled()
-        {
-            throw new NotImplementedException();
-        }
-
-        private AggregateEnumTypes.eNumOfDoors getNumberOfDoor()
-        {
-            throw new NotImplementedException();
-        }
-
-        private AggregateEnumTypes.eTypeColor getColorType()
-        {
-            throw new NotImplementedException();
-        }
-
-        private int getEngineVolume()
-        {
-            throw new NotImplementedException();
-        }
-
-        private AggregateEnumTypes.eTypeOfLicences getLicenseType()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void displayDictionary(Dictionary<string, Vehicle> i_GarageVehicles)
-        {
-            AggregateConsoleMessages.displayDictionary(i_GarageVehicles);
-        }
         public void displayVehiclesInformation()
         {
             AggregateConsoleMessages.displayVehicle(m_GarageVehicles);
         }
-
     }
 }
